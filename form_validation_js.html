@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent_container{
+            display: flex;
+            justify-content: center;
+            height:600px;
+            align-items: center;
+            width:1300px
+        }
+        .form{
+            width:50%;
+            box-shadow: 2px 2px 10px 10px grey;
+        }
+      .child_container{
+        /* border:1px solid red; */
+        display:flex;
+        justify-content: space-around;
+        height:100px;
+        padding:10px;
+      }
+      .child_child_container{
+        /* border:1px solid black; */
+        font-size: 1.4em;
+      }
+      input,select{
+        padding: 10px 20px;
+        font-size: 0.8em
+      }
+     .button_container,button{
+        /* border: 1px solid red; */
+        padding: 10px 0px;
+        text-align: center;
+        font-size: 1.2em;
+        background-color: brown;
+        color: white;
+        border: none;
+        width: 100%;
+     }
+     .icon{
+        position: relative;
+        /* right:35px */
+        left: 238px;
+        bottom:35px;
+        color:green
+     }
+     span{
+        color:red;
+        font-size:0.9em;
+     }
+     input{
+        outline:none
+     }
+    </style>
+</head>
+<body>
+    <div class="parent_container">
+        <form class="form">
+        <div class="child_container">
+            <div class="child_child_container">
+            <div style="text-align: center;"><label for="first_name">First Name</label></div>
+            <div id="first_name_div"><input id="first_name" type="text" placeholder="Enter Your First Name" />
+                <!-- <ion-icon class="icon" name="checkmark-circle-outline"></ion-icon> -->
+            </div>
+            <span id="first_name_span"></span>
+            </div>
+
+            <div class="child_child_container">
+                <div style="text-align: center;"><label for="last_name">Last Name</label></div>
+                <div><input id="last_name" type="text" placeholder="Enter Your Last Name"/>
+                </div>
+                <span id="last_name_span"></span>
+            </div>
+        </div>
+
+
+        <div class="child_container">
+            <div class="child_child_container">
+            <div style="text-align: center;"><label for="email">Email</label></div>
+            <div><input id="email" type="email" placeholder="Enter Your Email Id" />
+                <!-- <ion-icon class="icon" name="checkmark-circle-outline"></ion-icon> -->
+            </div>
+            <span id="email_span"></span>
+            </div>
+
+            <div class="child_child_container">
+                <div style="text-align: center;"><label for="mob_num">Mobile Number</label></div>
+                <div><input id="mob_num" type="text" placeholder="Enter Your Mobile Number"/>
+                    <!-- <ion-icon class="icon" name="checkmark-circle-outline"></ion-icon> -->
+                </div>
+                <span id="mob_span"></span>
+            </div>
+        </div>
+
+
+        <div class="child_container">
+            <div class="child_child_container">
+            <div style="text-align: center;"><label for="password">Password</label></div>
+            <div><input id="password" type="password" placeholder="Enter Your Password" />
+                <!-- <ion-icon class="icon" name="checkmark-circle-outline"></ion-icon> -->
+            </div>
+            <span id="pass_span"></span>
+            </div>
+            <div class="child_child_container">
+                <select>
+                    <option>Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+           </div>
+           <div class="button_container">
+                <button>Submit</button>
+           </div>
+        </form>
+    </div>
+    <script>
+       const first_input = document.getElementById("first_name")
+       const first_span = document.getElementById("first_name_span")
+       const btn = document.querySelector("button")
+       const form = document.querySelector("form")
+        function inputHandler(){
+        const value = first_input.value
+            if(value.length===0){
+                btn.disabled=true
+                first_span.textContent="Please input first name"
+                first_input.style.border="2px solid red"
+                return false;
+            }
+            btn.disabled = false
+           first_span.innerHTML = `<ion-icon class="icon" name="checkmark-circle-outline"></ion-icon>`
+           first_input.style.border="2px solid green"
+          return true;
+        }
+        //******Last_name_Input*************
+        const last_input = document.getElementById("last_name")
+        const last_span = document.getElementById("last_name_span")
+        function lastNameHandler(){
+            const str = last_input.value
+            if(str.length===0){
+                btn.disabled=true
+                last_input.style.border="2px solid red"
+                last_span.textContent="Please enter last name"
+                return false
+            }
+            btn.disabled=false
+            last_input.style.border="2px solid green"
+            last_span.innerHTML=`<ion-icon class="icon" name="checkmark-circle-outline"></ion-icon>`
+            return true
+        }
+        //*******Email_Input************
+        const email_input = document.getElementById("email")
+        const email_span = document.getElementById("email_span")
+        function emailHandler(){
+            const str1 = email_input.value
+            if(str1.length===0){
+                btn.disabled=true
+                email_input.style.border="2px solid red"
+                email_span.textContent="Please enter email id"
+                return false
+            }
+            btn.disabled=false
+            email_input.style.border="2px solid green"
+            email_span.innerHTML=`<ion-icon class="icon" name="checkmark-circle-outline"></ion-icon>`
+            return true
+        }
+        //////mobile_input////////
+        const mob_input = document.getElementById("mob_num")
+        const mob_span = document.getElementById("mob_span")
+        function mobHandler(){
+            const str2 = mob_input.value
+            if(str2.length===0){
+                btn.disabled=true
+                mob_input.style.border="2px solid red"
+                mob_span.textContent="Please enter mobile no."
+                return false
+            }
+            btn.disabled=false
+            mob_input.style.border="2px solid green"
+            mob_span.innerHTML=`<ion-icon class="icon" name="checkmark-circle-outline"></ion-icon>`
+            return true
+        }
+        //****Password_input******
+        const pass_input = document.getElementById("password")
+        const pass_span = document.getElementById("pass_span")
+        function passHandler(){
+            const str3 = pass_input.value
+            if(str3.length===0){
+                btn.disabled=true
+                pass_input.style.border="2px solid red"
+                pass_span.textContent="Please enter password"
+                return false
+            }
+            btn.disabled=false
+            pass_input.style.border="2px solid green"
+            pass_span.innerHTML=`<ion-icon class="icon" name="checkmark-circle-outline"></ion-icon>`
+            return true
+        }
+
+        first_input.addEventListener("keyup", inputHandler)
+        last_input.addEventListener("keyup",lastNameHandler)
+        email_input.addEventListener("keyup", emailHandler)
+        mob_input.addEventListener("keyup", mobHandler)
+        pass_input.addEventListener("keyup", passHandler)
+        form.addEventListener("submit", (event)=>{
+          event.preventDefault()
+          if(!inputHandler()){
+            return false //because when i did not enter the value then call the fuction false and false thing stop the execution
+          }
+          if(!lastNameHandler()){
+            return false
+          }
+          if(!emailHandler()){
+            return false
+          }
+          if(!mobHandler()){
+            return false
+          }
+          if(!passHandler()){
+            return false
+          }
+        })
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
